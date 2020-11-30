@@ -48,7 +48,7 @@ function writestock(x){
   }else{
     x=x-1;
   }
-  e=x;
+//  e=x;
   database.ref('/').update({food:x});
 // text("food remaining: "+x,250,200);
 }

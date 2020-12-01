@@ -34,7 +34,7 @@ function draw() {
       dog.addImage(dog2);
      
     }
-    text("food remaining: "+e,250,200);
+    text("food remaining: "+foodS,200,300);
 }
 function readstock(data){
   foodS=data.val();

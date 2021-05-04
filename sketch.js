@@ -19,35 +19,41 @@ function setup() {
   dog.scale=0.7;
   dog.addImage(dog1);
   database=firebase.database();
-  // foodS = database.ref('Food');
-  // foodS.on("value",readstock);
+ ref = database.ref("Food")
+ ref.on("value",readStock)
 }
 
 
 function draw() {  
   background(255,255,255)
   drawSprites();
-  //add styles here
-  
-    if(keyDown(UP_ARROW)){
-      writeStock(5);
+  // add styles here
+    if(keyWentDown(UP_ARROW)){
+      writeStock(foodS);
       dog.addImage(dog2);
      
     }
     text("food remaining: "+foodS,200,300);
 }
-function readstock(data){
+function readStock(data){
   foodS=data.val();
-  }
-  
-  
-function writeStock(x){
+  console.log(foodS)
+}
 
-  text(x,30,30);
+function writeStock(x){
+  if(x<0){
+    x=0
+  }
+  else{
+ x=x-1
+  }
+  // text(x,30,30);
 //  e=x;
 console.log("fedvc")
   database.ref('/').update({
     Food:x
   });
 // text("food remaining: "+x,250,200);
+
+// dog.addImage(dog1)
 }
